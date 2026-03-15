@@ -28,8 +28,9 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
-      - name: Install Rollup Linux binary (workaround npm optional deps bug)
+        run: npm install
+
+      - name: Ensure Rollup Linux binary (npm optional deps bug)
         run: npm install @rollup/rollup-linux-x64-gnu --no-save
 
       - name: Build
