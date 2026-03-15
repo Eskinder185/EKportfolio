@@ -19,7 +19,8 @@ type Project = {
   featured?: boolean;
 };
 
-const img = (file: string) => `/images/${file}`;
+const base = import.meta.env.BASE_URL;
+const img = (file: string) => `${base}images/${file}`;
 
 const ProjectsPage: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<Category>('all');

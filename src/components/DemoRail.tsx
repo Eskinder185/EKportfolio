@@ -1,9 +1,10 @@
 // src/components/DemoRail.tsx
+const demosBase = import.meta.env.BASE_URL + 'demos/';
 type Clip = { title:string; caption:string; src?:string; placeholder?:boolean; cta?:{label:string; href:string} };
 const clips: Clip[] = [
-  { title:"JohnnyCloud", caption:"GuardDuty alert pops into dashboard", src:"/demos/johnnycloud.gif", cta:{label:"Open project", href:"#projects"} },
-  { title:"AstraFocusNexus", caption:"AI-powered productivity dashboard with focus tracking, task management, and performance insights.", src:"/demos/AstraFocusNexus.gif", cta:{label:"Open project", href:"#projects"} },
-  { title:"CodeRush", caption:"Interactive coding practice platform built to improve speed, accuracy, and language fluency.", src:"/demos/CodeRush.gif", cta:{label:"Open project", href:"#projects"} },
+  { title:"JohnnyCloud", caption:"GuardDuty alert pops into dashboard", src:`${demosBase}johnnycloud.gif`, cta:{label:"Open project", href:"#projects"} },
+  { title:"AstraFocusNexus", caption:"AI-powered productivity dashboard with focus tracking, task management, and performance insights.", src:`${demosBase}AstraFocusNexus.gif`, cta:{label:"Open project", href:"#projects"} },
+  { title:"CodeRush", caption:"Interactive coding practice platform built to improve speed, accuracy, and language fluency.", src:`${demosBase}CodeRush.gif`, cta:{label:"Open project", href:"#projects"} },
 ];
 
 export default function DemoRail() {

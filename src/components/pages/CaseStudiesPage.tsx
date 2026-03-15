@@ -8,7 +8,8 @@ import PageLayout from '../PageLayout';
 import ScrollReveal from '../ScrollReveal';
 import { fadeInUp } from '../../utils/animations';
 
-const img = (file: string) => `/images/${file}`; // files live in public/images/
+const base = import.meta.env.BASE_URL;
+const img = (file: string) => `${base}images/${file}`;
 
 type Study = {
   id: string;

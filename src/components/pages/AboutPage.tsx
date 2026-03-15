@@ -11,11 +11,7 @@ import { MapPin, Globe, Calendar } from 'lucide-react';
 const AboutPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'vision' | 'expertise' | 'innovation'>('vision');
 
-  // If your photo is at public/images/eskinder.jpg, this will resolve correctly
-const photoUrl = '/eskinder.jpg';
-
-  // If you placed it directly under /public, use:
-  // const photoUrl = `${import.meta.env.BASE_URL}eskinder.jpg`;
+  const photoUrl = `${import.meta.env.BASE_URL}eskinder.jpg`;
 
   // ---- Top tabs -------------------------------------------------------------
   const visionContent = {
