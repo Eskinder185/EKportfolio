@@ -11,9 +11,11 @@
 
   ## Live site (GitHub Pages)
 
-  The site is deployed automatically via GitHub Actions when you push to `main`. After enabling GitHub Pages in the repo settings:
+  The workflow builds on every push to `main` and pushes the built site to the `gh-pages` branch. To get the live page:
 
-  1. **Settings** → **Pages** → **Build and deployment**: choose **GitHub Actions**.
-  2. Push to `main` (or run the “Deploy to GitHub Pages” workflow manually).
-  3. The site will be live at: **https://eskinder185.github.io/EKportfolio/** (replace `EKportfolio` with your repo name if different).
+  1. Go to **https://github.com/Eskinder185/EKportfolio** → **Settings** → **Pages** (left sidebar).
+  2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+  3. Set **Branch** to **gh-pages** and folder to **/ (root)**. Click **Save**.
+  4. Run the workflow once: **Actions** tab → **Deploy to GitHub Pages** → **Run workflow** (or push a commit to `main`).
+  5. After the workflow completes (and the branch `gh-pages` exists), the site will be at: **https://eskinder185.github.io/EKportfolio/**
   
