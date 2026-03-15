@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Video Placeholders</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #1a1a2e; color: white; }
+        .video-placeholder { 
+            width: 300px; height: 200px; 
+            background: linear-gradient(45deg, #8b5cf6, #22d3ee); 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 10px; 
+            font-weight: bold;
+        }
+        .container { display: flex; flex-wrap: wrap; }
+    </style>
+</head>
+<body>
+    <h1>Demo Video Placeholders</h1>
+    <p>Replace these placeholders with actual MP4 videos:</p>
+    
+    <div class="container">
+        <div class="video-placeholder">johnnycloud.mp4<br/>GuardDuty Alert Demo</div>
+        <div class="video-placeholder">trivia.mp4<br/>Trivia Clash Demo</div>
+        <div class="video-placeholder">streak.mp4<br/>Streak Tracker Demo</div>
+    </div>
+    
+    <h2>Video Requirements:</h2>
+    <ul>
+        <li>Duration: 8-12 seconds each</li>
+        <li>Format: MP4 (H.264)</li>
+        <li>Resolution: 720p (1280x720)</li>
+        <li>Frame Rate: 24fps</li>
+        <li>Audio: None (muted)</li>
+        <li>File Size: ≤1-2 MB each</li>
+        <li>Codec: H.264 with faststart flag</li>
+    </ul>
+    
+    <h2>FFmpeg Command:</h2>
+    <pre>ffmpeg -i input.mov -vf "scale=1280:-2,fps=24" -an -c:v libx264 -crf 28 -movflags +faststart public/demos/johnnycloud.mp4</pre>
+</body>
+</html>
+
+
