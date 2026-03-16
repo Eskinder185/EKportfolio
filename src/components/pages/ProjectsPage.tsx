@@ -71,7 +71,7 @@ const ProjectsPage: React.FC = () => {
       technologies: ['JavaScript', 'Learning Platform'],
       categories: ['frontend'],
       githubUrl: 'https://github.com/Eskinder185/CodeRush',
-      liveUrl: 'https://eskinder185.github.io/languages',
+      liveUrl: 'https://eskinder185.github.io/CodeRush/',
       featured: true,
     },
     // ⭐ Featured 4
