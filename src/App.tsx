@@ -10,7 +10,6 @@ import ProjectsPage from './components/pages/ProjectsPage';
 import CaseStudiesPage from './components/pages/CaseStudiesPage';
 import BooksPage from './components/pages/BooksPage';
 import ContactPage from './components/pages/ContactPage';
-import { ThemeProvider } from './contexts/ThemeContext';
 import { pageTransition } from './utils/animations';
 
 function AppContent() {
@@ -73,19 +72,21 @@ function AppContent() {
         currentPage={currentPage}
         onNavigate={handleNavigate}
       />
-      <main className="relative">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={currentPage}
-            variants={pageTransition}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="min-h-[60vh]"
-          >
-            {renderCurrentPage()}
-          </motion.div>
-        </AnimatePresence>
+      <main className="relative layout-grid pb-20 md:pb-6 md:pl-[5.5rem]">
+        <div className="layout-grid-inner">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={currentPage}
+              variants={pageTransition}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="min-h-[60vh]"
+            >
+              {renderCurrentPage()}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </main>
       <Footer />
     </div>
@@ -94,8 +95,6 @@ function AppContent() {
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
+    <AppContent />
   );
 }

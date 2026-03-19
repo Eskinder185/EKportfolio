@@ -1,199 +1,173 @@
-// src/sections/ToolstackHeatmap.tsx
-import React, { useState } from 'react';
-import { Cloud, Code2, Settings, Shield } from 'lucide-react';
+// src/sections/ToolstackHeatmap.tsx — Artifact Bento Inventory (AWS, Security, AI)
+import React from 'react';
+import { Cloud, Shield, Brain } from 'lucide-react';
 
-type Tool = {
-  name: string;
-  heat: "core" | "regular" | "learning"; // how strong / recent
-};
-
-type Group = {
-  label: string;
-  icon: React.ComponentType<any>;
-  gradient: string;
-  tools: Tool[];
-};
-
-const groups: Group[] = [
+const clusters = [
   {
-    label: "AWS",
+    id: 'aws',
+    label: 'AWS',
+    subtitle: 'Artifact of Thinking',
     icon: Cloud,
-    gradient: "from-orange-500 to-amber-600",
-    tools: [
-      { name: "EC2", heat: "core" },
-      { name: "S3", heat: "core" },
-      { name: "IAM", heat: "core" },
-      { name: "Lambda", heat: "regular" },
-      { name: "CloudFront", heat: "regular" },
-      { name: "DynamoDB", heat: "regular" },
-      { name: "RDS", heat: "learning" },
-      { name: "Budgets/Cost Alerts", heat: "regular" },
-      { name: "GuardDuty", heat: "regular" },
-    ],
+    gradient: 'from-orange-500 to-amber-600',
+    artifact: 'vpc',
   },
   {
-    label: "Web",
-    icon: Code2,
-    gradient: "from-violet-500 to-purple-600",
-    tools: [
-      { name: "React", heat: "core" },
-      { name: "TypeScript", heat: "core" },
-      { name: "Node.js", heat: "regular" },
-      { name: "Vite", heat: "regular" },
-      { name: "Tailwind CSS", heat: "core" },
-    ],
-  },
-  {
-    label: "DevOps / IaC",
-    icon: Settings,
-    gradient: "from-cyan-500 to-blue-600",
-    tools: [
-      { name: "GitHub Actions (CI/CD)", heat: "regular" },
-      { name: "Docker", heat: "regular" },
-      { name: "Terraform", heat: "learning" },
-      { name: "CloudFormation", heat: "learning" },
-      { name: "Monitoring (CloudWatch)", heat: "regular" },
-    ],
-  },
-  {
-    label: "Security",
+    id: 'security',
+    label: 'Security',
+    subtitle: 'Artifact of Thinking',
     icon: Shield,
-    gradient: "from-emerald-500 to-teal-600",
-    tools: [
-      { name: "JWT / Auth", heat: "regular" },
-      { name: "OWASP basics", heat: "regular" },
-      { name: "Least-Privilege IAM", heat: "core" },
-      { name: "Audit Logs", heat: "regular" },
-    ],
+    gradient: 'from-violet-500 to-purple-600',
+    artifact: 'typescript',
   },
-];
+  {
+    id: 'ai',
+    label: 'AI',
+    subtitle: 'Artifact of Thinking',
+    icon: Brain,
+    gradient: 'from-emerald-500 to-teal-600',
+    artifact: 'confusion-matrix',
+  },
+] as const;
 
-function chipClass(heat: Tool["heat"]) {
-  switch (heat) {
-    case "core":
-      // brightest chip (heaviest usage / most recent)
-      return "bg-white/15 border-white/20 text-white hover:bg-white/20 hover:border-white/30 hover:scale-105";
-    case "regular":
-      // medium chip
-      return "bg-white/8 border-white/15 text-white/90 hover:bg-white/12 hover:border-white/25 hover:scale-105";
-    default:
-      // light chip (learning / less recent)
-      return "bg-white/5 border-white/10 text-white/70 hover:bg-white/8 hover:border-white/20 hover:scale-105";
-  }
+function TypeScriptSnippet() {
+  return (
+    <div className="p-4 font-mono text-xs leading-relaxed bg-black/30 rounded-lg border border-white/10 overflow-x-auto">
+      <pre className="text-gray-300">
+        <span className="text-purple-400">async function</span>{' '}
+        <span className="text-cyan-300">fetchSecure</span>
+        <span className="text-gray-500">{'<'}</span>
+        <span className="text-amber-300">T</span>
+        <span className="text-gray-500">{'>'}</span>
+        <span className="text-gray-500">(</span>
+        <span className="text-orange-300">url</span>
+        <span className="text-gray-500">: string)</span>
+        <span className="text-gray-500">: Promise</span>
+        <span className="text-gray-500">{'<'}</span>
+        <span className="text-amber-300">T</span>
+        <span className="text-gray-500">{'>'}</span>
+        <span className="text-gray-500">{' {'}</span>
+        {'\n  '}
+        <span className="text-purple-400">const</span> res ={' '}
+        <span className="text-purple-400">await</span>{' '}
+        <span className="text-cyan-300">fetch</span>
+        <span className="text-gray-500">(url);</span>
+        {'\n  '}
+        <span className="text-purple-400">if</span>
+        <span className="text-gray-500"> (!res.ok)</span>{' '}
+        <span className="text-purple-400">throw new</span>{' '}
+        <span className="text-amber-300">Error</span>
+        <span className="text-gray-500">(res.statusText);</span>
+        {'\n  '}
+        <span className="text-purple-400">return</span> res
+        <span className="text-gray-500">.</span>
+        <span className="text-cyan-300">json</span>
+        <span className="text-gray-500">();</span>
+        {'\n'}
+        <span className="text-gray-500">{'}'}</span>
+      </pre>
+    </div>
+  );
+}
+
+function VPCDiagram() {
+  return (
+    <div className="p-4 flex items-center justify-center min-h-[140px] bg-black/20 rounded-lg border border-white/10">
+      <svg viewBox="0 0 240 140" className="w-full max-w-[220px] h-auto" aria-hidden>
+        <defs>
+          <linearGradient id="vpc-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="rgba(251,146,60,0.2)" />
+            <stop offset="100%" stopColor="rgba(245,158,11,0.15)" />
+          </linearGradient>
+          <linearGradient id="pub-fill" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="rgba(34,211,238,0.15)" />
+            <stop offset="100%" stopColor="rgba(34,211,238,0.05)" />
+          </linearGradient>
+          <linearGradient id="priv-fill" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="rgba(139,92,246,0.12)" />
+            <stop offset="100%" stopColor="rgba(139,92,246,0.04)" />
+          </linearGradient>
+        </defs>
+        {/* VPC boundary */}
+        <rect x="10" y="10" width="220" height="120" rx="6" fill="url(#vpc-fill)" stroke="rgba(251,146,60,0.5)" strokeWidth="1.5" />
+        <text x="120" y="26" textAnchor="middle" className="fill-gray-400" fontSize="10" fontFamily="monospace">VPC 10.0.0.0/16</text>
+        {/* Public subnet */}
+        <rect x="20" y="38" width="95" height="42" rx="4" fill="url(#pub-fill)" stroke="rgba(34,211,238,0.45)" strokeWidth="1" />
+        <text x="67" y="54" textAnchor="middle" className="fill-cyan-400/90" fontSize="8" fontFamily="monospace">Public A</text>
+        <text x="67" y="66" textAnchor="middle" className="fill-gray-500" fontSize="7">10.0.1.0/24</text>
+        <circle cx="67" cy="74" r="4" fill="rgba(34,211,238,0.4)" />
+        <text x="67" y="78" textAnchor="middle" className="fill-gray-500" fontSize="6">IGW</text>
+        {/* Private subnet */}
+        <rect x="125" y="38" width="95" height="42" rx="4" fill="url(#priv-fill)" stroke="rgba(139,92,246,0.45)" strokeWidth="1" />
+        <text x="172" y="54" textAnchor="middle" className="fill-violet-400/90" fontSize="8" fontFamily="monospace">Private A</text>
+        <text x="172" y="66" textAnchor="middle" className="fill-gray-500" fontSize="7">10.0.2.0/24</text>
+        <rect x="166" y="70" width="12" height="8" rx="1" fill="rgba(139,92,246,0.35)" />
+        <text x="172" y="78" textAnchor="middle" className="fill-gray-500" fontSize="6">NAT</text>
+        {/* DB / internal */}
+        <rect x="72" y="88" width="96" height="34" rx="4" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.4)" strokeWidth="1" />
+        <text x="120" y="104" textAnchor="middle" className="fill-emerald-400/90" fontSize="8" fontFamily="monospace">Private B (DB)</text>
+        <text x="120" y="116" textAnchor="middle" className="fill-gray-500" fontSize="7">10.0.3.0/24</text>
+      </svg>
+    </div>
+  );
+}
+
+function ConfusionMatrixViz() {
+  const cellClass = 'flex items-center justify-center text-[10px] font-semibold font-mono rounded border border-white/20';
+  return (
+    <div className="p-4 flex flex-col items-center gap-2 bg-black/20 rounded-lg border border-white/10">
+      <span className="text-[10px] text-gray-400 font-medium uppercase tracking-wider">Confusion Matrix</span>
+      <div className="grid grid-cols-2 gap-1.5">
+        <div className={`${cellClass} bg-emerald-500/25 text-emerald-300 w-14 h-10`}>TP</div>
+        <div className={`${cellClass} bg-rose-500/25 text-rose-300 w-14 h-10`}>FP</div>
+        <div className={`${cellClass} bg-rose-500/25 text-rose-300 w-14 h-10`}>FN</div>
+        <div className={`${cellClass} bg-emerald-500/25 text-emerald-300 w-14 h-10`}>TN</div>
+      </div>
+      <div className="flex gap-3 text-[8px] text-gray-500">
+        <span>Pred ↑</span>
+        <span>Actual →</span>
+      </div>
+    </div>
+  );
 }
 
 export default function ToolstackHeatmap() {
-  const [hoveredGroup, setHoveredGroup] = useState<string | null>(null);
-
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6" aria-labelledby="artifact-bento-heading">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Tech <span className="gradient-text">Stack</span>
+          <h2 id="artifact-bento-heading" className="text-4xl md:text-5xl font-bold mb-6">
+            Artifact Bento <span className="gradient-text">Inventory</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            My real tools, weighted by usage. Darker chips = more core/recent experience.
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Each skill as a distinct tile with an Artifact of Thinking: architecture, code, and ML evaluation.
           </p>
-
-          {/* Legend */}
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <span className="rounded-md border border-white/20 bg-white/15 px-3 py-1 text-white text-xs font-medium">Core</span>
-              <span className="text-gray-400">Expert level</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="rounded-md border border-white/15 bg-white/8 px-3 py-1 text-white/90 text-xs font-medium">Regular</span>
-              <span className="text-gray-400">Proficient</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="rounded-md border border-white/10 bg-white/5 px-3 py-1 text-white/70 text-xs font-medium">Learning</span>
-              <span className="text-gray-400">Exploring</span>
-            </div>
-          </div>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2">
-          {groups.map((group, groupIndex) => {
-            const IconComponent = group.icon;
+        <div className="bento-grid">
+          {clusters.map((cluster) => {
+            const IconComponent = cluster.icon;
             return (
-              <article
-                key={group.label}
-                className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-violet-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-500/20"
-                onMouseEnter={() => setHoveredGroup(group.label)}
-                onMouseLeave={() => setHoveredGroup(null)}
+              <div
+                key={cluster.id}
+                className="bento-tile bento-span-4 flex flex-col overflow-hidden glass-panel"
               >
-                {/* Header with icon */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${group.gradient} p-3 group-hover:scale-110 transition-transform duration-300`}>
-                    <IconComponent className="w-full h-full text-white" />
+                <div className="p-5 pb-3 flex items-center gap-3 border-b border-white/10">
+                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-r ${cluster.gradient} flex items-center justify-center flex-shrink-0`}>
+                    <IconComponent className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white group-hover:text-violet-300 transition-colors duration-300">
-                      {group.label}
-                    </h3>
-                    <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                      {group.tools.length} tools
-                    </p>
+                    <h3 className="text-lg font-bold text-white">{cluster.label}</h3>
+                    <p className="text-xs text-gray-400 mt-0.5">{cluster.subtitle}</p>
                   </div>
                 </div>
-
-                {/* Tools grid */}
-                <div className="flex flex-wrap gap-3">
-                  {group.tools.map((tool, toolIndex) => (
-                    <div
-                      key={tool.name}
-                      className={`relative rounded-lg border px-4 py-2 text-sm font-medium transition-all duration-300 cursor-pointer ${chipClass(tool.heat)}`}
-                      aria-label={`${tool.name} – ${tool.heat}`}
-                      title={`${tool.name} • ${tool.heat} proficiency`}
-                    >
-                      {tool.name}
-                      
-                      {/* Hover glow effect */}
-                      <div className={`absolute inset-0 rounded-lg bg-gradient-to-r ${group.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10`} />
-                      
-                      {/* Pulse animation for core tools */}
-                      {tool.heat === "core" && (
-                        <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-violet-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 animate-pulse" />
-                      )}
-                    </div>
-                  ))}
+                <div className="p-5 pt-4 flex-1 min-h-0">
+                  {cluster.artifact === 'typescript' && <TypeScriptSnippet />}
+                  {cluster.artifact === 'vpc' && <VPCDiagram />}
+                  {cluster.artifact === 'confusion-matrix' && <ConfusionMatrixViz />}
                 </div>
-
-                {/* Background glow effect */}
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${group.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 -z-10`} />
-                
-                {/* Animated border */}
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${group.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10 blur-sm`} />
-              </article>
+              </div>
             );
           })}
-        </div>
-
-        {/* Interactive stats */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-8 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white">
-                {groups.reduce((acc, group) => acc + group.tools.filter(t => t.heat === "core").length, 0)}
-              </div>
-              <div className="text-sm text-gray-400">Core Skills</div>
-            </div>
-            <div className="w-px h-12 bg-white/20" />
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white">
-                {groups.reduce((acc, group) => acc + group.tools.length, 0)}
-              </div>
-              <div className="text-sm text-gray-400">Total Tools</div>
-            </div>
-            <div className="w-px h-12 bg-white/20" />
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white">
-                {groups.length}
-              </div>
-              <div className="text-sm text-gray-400">Categories</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

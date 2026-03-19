@@ -5,7 +5,6 @@ import FeaturesSection from '../FeaturesSection';
 import DemoRail from '../DemoRail';
 import TestimonialsSlider from '../TestimonialsSlider';
 import ApproachSection from '../ApproachSection';
-import ProductsMarquee from '../ProductsMarquee';
 import CTASection from '../CTASection';
 import ScrollReveal from '../ScrollReveal';
 
@@ -13,29 +12,44 @@ interface HomePageProps {
   onNavigate: (page: string) => void;
 }
 
+/** Section spacing: generous vertical rhythm (Apple-inspired clarity) */
+const SECTION_SPACING = 'py-24 md:py-32';
+
 const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
-    <div className="min-h-screen">
-      <HeroSection onNavigate={onNavigate} />
+    <div className="min-h-screen flex flex-col">
+      {/* 1. Hero — full viewport, no competing content */}
       <ScrollReveal>
+        <HeroSection onNavigate={onNavigate} />
+      </ScrollReveal>
+
+      {/* 2. Trust / metrics strip */}
+      <ScrollReveal className={SECTION_SPACING}>
         <StatsRow />
       </ScrollReveal>
-      <ScrollReveal>
-        <FeaturesSection onNavigate={onNavigate} />
-      </ScrollReveal>
-      <ScrollReveal>
+
+      {/* 3. Featured work */}
+      <ScrollReveal className={SECTION_SPACING}>
         <DemoRail />
       </ScrollReveal>
-      <ScrollReveal>
-        <TestimonialsSlider />
+
+      {/* 4. What I Offer — editorial width, no side-by-side */}
+      <ScrollReveal className={SECTION_SPACING}>
+        <FeaturesSection onNavigate={onNavigate} />
       </ScrollReveal>
-      <ScrollReveal>
+
+      {/* 5. My Approach — editorial width */}
+      <ScrollReveal className={SECTION_SPACING}>
         <ApproachSection />
       </ScrollReveal>
-      <ScrollReveal>
-        <ProductsMarquee />
+
+      {/* 6. Testimonials */}
+      <ScrollReveal className={SECTION_SPACING}>
+        <TestimonialsSlider />
       </ScrollReveal>
-      <ScrollReveal>
+
+      {/* 7. Contact CTA */}
+      <ScrollReveal className={SECTION_SPACING}>
         <CTASection onNavigate={onNavigate} />
       </ScrollReveal>
     </div>

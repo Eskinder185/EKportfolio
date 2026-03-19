@@ -1,80 +1,132 @@
-import React from 'react';
-import ThemeSelector from './ThemeSelector';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import {
+  Home,
+  User,
+  Briefcase,
+  FolderOpen,
+  FileText,
+  BookOpen,
+  MessageCircle,
+  type LucideIcon,
+} from 'lucide-react';
 
 interface NavigationProps {
   currentPage: string;
   onNavigate: (page: string) => void;
 }
 
-const Navigation: React.FC<NavigationProps> = ({
-  currentPage,
-  onNavigate,
-}) => {
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'case-studies', label: 'Case Studies' },
-    { id: 'books', label: 'Books' },
-    { id: 'contact', label: 'Get in Touch' },
-  ];
+const navItems: { id: string; label: string; icon: LucideIcon }[] = [
+  { id: 'home', label: 'Home', icon: Home },
+  { id: 'about', label: 'About', icon: User },
+  { id: 'experience', label: 'Experience', icon: Briefcase },
+  { id: 'projects', label: 'Projects', icon: FolderOpen },
+  { id: 'case-studies', label: 'Case Studies', icon: FileText },
+  { id: 'books', label: 'Books', icon: BookOpen },
+  { id: 'contact', label: 'Get in Touch', icon: MessageCircle },
+];
+
+const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate }) => {
+  const tabBarRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(
+    navItems.findIndex((i) => i.id === currentPage)
+  );
+  const [maskStyle, setMaskStyle] = useState({ width: 0, left: 0 });
+
+  useEffect(() => {
+    const idx = navItems.findIndex((i) => i.id === currentPage);
+    setActiveIndex(idx >= 0 ? idx : 0);
+  }, [currentPage]);
+
+  // Update sliding mask position for mobile tab bar (thumb-following pill)
+  useEffect(() => {
+    const bar = tabBarRef.current;
+    if (!bar) return;
+    const tabs = bar.querySelectorAll('[data-nav-tab]');
+    const activeTab = tabs[activeIndex] as HTMLElement | undefined;
+    if (activeTab) {
+      const barRect = bar.getBoundingClientRect();
+      const tabRect = activeTab.getBoundingClientRect();
+      setMaskStyle({
+        width: tabRect.width,
+        left: tabRect.left - barRect.left,
+      });
+    }
+  }, [activeIndex, currentPage]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <button
-            onClick={() => onNavigate('home')}
-            className="text-xl font-bold gradient-text hover:scale-105 transition-transform duration-200"
-          >
-            Eskinder Kassahun
-          </button>
-
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+    <>
+      {/* Desktop: left-anchored refractive sidebar (Floating Navigation) */}
+      <aside
+        className="hidden md:flex fixed left-4 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-2 py-5 px-3 nav-sidebar w-14"
+        aria-label="Main navigation"
+      >
+        <div className="flex flex-col items-center gap-1">
+          {navItems.map((item, index) => {
+            const Icon = item.icon;
+            const isActive = currentPage === item.id;
+            return (
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`relative px-3 py-2 text-sm font-medium transition-all duration-200 hover:text-white ${
-                  currentPage === item.id
-                    ? 'text-white'
-                    : 'text-gray-400'
+                className={`relative flex items-center justify-center w-10 h-10 rounded-xl transition-colors duration-200 ${
+                  isActive
+                    ? 'text-[var(--accent)] bg-white/10'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
                 }`}
+                title={item.label}
+                aria-label={item.label}
+                aria-current={isActive ? 'page' : undefined}
               >
-                {item.label}
-                {currentPage === item.id && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-[var(--violet)] to-[var(--cyan)] rounded-lg opacity-20 scale-95" />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-r from-[var(--violet)] to-[var(--cyan)] rounded-lg opacity-0 hover:opacity-10 scale-95 hover:scale-100 transition-all duration-200" />
+                <Icon className="w-5 h-5" strokeWidth={1.75} />
               </button>
-            ))}
-          </div>
-
-          {/* Theme Selector */}
-          <ThemeSelector />
+            );
+          })}
         </div>
+        <div className="flex-1 min-h-[24px]" />
+      </aside>
 
-        {/* Mobile Navigation */}
-        <div className="md:hidden mt-4 flex flex-wrap gap-2">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => onNavigate(item.id)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
-                currentPage === item.id
-                  ? 'bg-gradient-to-r from-[var(--violet)] to-[var(--cyan)] text-white'
-                  : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
+      {/* Mobile: bottom-anchored Liquid Glass tab bar with dynamic mask */}
+      <nav
+        ref={tabBarRef}
+        className="md:hidden fixed bottom-4 left-4 right-4 z-50 nav-tab-bar px-2 py-2"
+        aria-label="Main navigation"
+      >
+        <div className="relative flex items-center justify-around">
+          {/* Sliding pill mask (follows active tab / thumb position) */}
+          <motion.div
+            className="nav-tab-mask absolute top-0 bottom-0 pointer-events-none"
+            style={{
+              left: maskStyle.left,
+              width: maskStyle.width,
+            }}
+            initial={false}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          />
+          {navItems.map((item, index) => {
+            const Icon = item.icon;
+            const isActive = currentPage === item.id;
+            return (
+              <button
+                key={item.id}
+                data-nav-tab
+                onClick={() => onNavigate(item.id)}
+                className={`relative z-10 flex flex-col items-center justify-center min-w-[44px] min-h-[44px] rounded-xl transition-colors duration-200 ${
+                  isActive ? 'text-[var(--accent)]' : 'text-gray-400 active:text-white'
+                }`}
+                aria-label={item.label}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                <Icon className="w-5 h-5" strokeWidth={1.75} />
+                <span className="text-[10px] mt-0.5 font-medium truncate max-w-[56px]">
+                  {item.label.replace('Get in Touch', 'Contact')}
+                </span>
+              </button>
+            );
+          })}
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 
