@@ -89,10 +89,10 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate }) => {
       {/* Mobile: bottom-anchored Liquid Glass tab bar with dynamic mask */}
       <nav
         ref={tabBarRef}
-        className="md:hidden fixed bottom-4 left-4 right-4 z-50 nav-tab-bar px-2 py-2"
+        className="md:hidden fixed bottom-4 left-2 right-2 z-50 nav-tab-bar px-1 py-2"
         aria-label="Main navigation"
       >
-        <div className="relative flex items-center justify-around">
+        <div className="relative flex items-center justify-between w-full px-1">
           {/* Sliding pill mask (follows active tab / thumb position) */}
           <motion.div
             className="nav-tab-mask absolute top-0 bottom-0 pointer-events-none"
@@ -111,14 +111,14 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate }) => {
                 key={item.id}
                 data-nav-tab
                 onClick={() => onNavigate(item.id)}
-                className={`relative z-10 flex flex-col items-center justify-center min-w-[44px] min-h-[44px] rounded-xl transition-colors duration-200 ${
+                className={`relative z-10 flex flex-col items-center justify-center min-w-[40px] min-h-[40px] rounded-xl transition-colors duration-200 ${
                   isActive ? 'text-[var(--accent)]' : 'text-gray-400 active:text-white'
                 }`}
                 aria-label={item.label}
                 aria-current={isActive ? 'page' : undefined}
               >
-                <Icon className="w-5 h-5" strokeWidth={1.75} />
-                <span className="text-[10px] mt-0.5 font-medium truncate max-w-[56px]">
+                <Icon className="w-4 h-4 min-[390px]:w-5 min-[390px]:h-5" strokeWidth={1.75} />
+                <span className="hidden min-[390px]:block text-[9px] mt-0.5 font-medium truncate max-w-[46px] leading-tight whitespace-nowrap">
                   {item.label.replace('Get in Touch', 'Contact')}
                 </span>
               </button>

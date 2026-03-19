@@ -6,10 +6,9 @@ import { ArrowRight, Clock, Users, Target, ExternalLink, Zap, Package } from 'lu
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import PageLayout from '../PageLayout';
 import ScrollReveal from '../ScrollReveal';
-import ArchitectureDiagramPlaceholder from '../ArchitectureDiagramPlaceholder';
 import { fadeInUp } from '../../utils/animations';
 
-const base = import.meta.env.BASE_URL;
+const base = (import.meta as any).env.BASE_URL as string;
 const img = (file: string) => `${base}images/${file}`;
 
 type Study = {
@@ -122,7 +121,7 @@ const CaseStudiesPage: React.FC = () => {
             Case <span className="gradient-text">Studies</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Linear storytelling: Impact + Scope + Product. Quantifiable outcomes and 3D architecture placeholders.
+            Linear storytelling: Impact + Scope + Product. Quantifiable outcomes and architecture visuals.
           </p>
         </div>
       </ScrollReveal>
@@ -132,7 +131,7 @@ const CaseStudiesPage: React.FC = () => {
           <ScrollReveal key={study.id} staggerIndex={index}>
             <article className="rounded-2xl glass-panel border border-white/10 overflow-hidden">
               <div className="grid lg:grid-cols-5 gap-0">
-                {/* Visual: image + 3D diagram placeholder */}
+                {/* Visual: image */}
                 <div className="lg:col-span-2 relative">
                   <div className="relative h-56 lg:min-h-[220px] overflow-hidden">
                     <ImageWithFallback
@@ -145,9 +144,6 @@ const CaseStudiesPage: React.FC = () => {
                         {study.category}
                       </Badge>
                     </div>
-                  </div>
-                  <div className="p-4">
-                    <ArchitectureDiagramPlaceholder label="3D architecture (Three.js)" />
                   </div>
                 </div>
 

@@ -5,7 +5,6 @@ import { ExternalLink, Github, Eye, Filter, Zap, Target, Package } from 'lucide-
 import ProjectCover from '../ui/ProjectCover';
 import PageLayout from '../PageLayout';
 import ScrollReveal from '../ScrollReveal';
-import ArchitectureDiagramPlaceholder from '../ArchitectureDiagramPlaceholder';
 
 type Category = 'all' | 'frontend' | 'backend' | 'cloud' | 'ai-ml';
 type Project = {
@@ -26,7 +25,7 @@ type Project = {
   product: string;
 };
 
-const base = import.meta.env.BASE_URL;
+const base = (import.meta as any).env.BASE_URL as string;
 const img = (file: string) => `${base}images/${file}`;
 
 const ProjectsPage: React.FC = () => {
@@ -261,7 +260,7 @@ const ProjectsPage: React.FC = () => {
             Linear <span className="gradient-text">Storytelling</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Each project: Impact + Scope + Product. Quantifiable outcomes and 3D architecture placeholders.
+            Each project: Impact + Scope + Product. Quantifiable outcomes and architecture visuals.
           </p>
         </div>
       </ScrollReveal>
@@ -290,7 +289,7 @@ const ProjectsPage: React.FC = () => {
           <ScrollReveal key={project.id} staggerIndex={index}>
             <article className="rounded-2xl glass-panel border border-white/10 overflow-hidden">
               <div className="grid lg:grid-cols-5 gap-0">
-                {/* Visual: cover + diagram placeholder */}
+                {/* Visual: cover */}
                 <div className="lg:col-span-2 relative">
                   <div className="relative aspect-video lg:aspect-auto lg:min-h-[280px] overflow-hidden">
                     <ProjectCover
@@ -304,9 +303,6 @@ const ProjectsPage: React.FC = () => {
                         Featured
                       </span>
                     )}
-                  </div>
-                  <div className="p-4">
-                    <ArchitectureDiagramPlaceholder label="3D architecture (Three.js)" />
                   </div>
                 </div>
 

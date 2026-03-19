@@ -1,5 +1,5 @@
 // src/components/DemoRail.tsx
-const demosBase = import.meta.env.BASE_URL + 'demos/';
+const demosBase = (import.meta as any).env.BASE_URL + 'demos/';
 type Clip = { title:string; caption:string; src?:string; placeholder?:boolean; cta?:{label:string; href:string} };
 const clips: Clip[] = [
   { title:"JohnnyCloud", caption:"GuardDuty alert pops into dashboard", src:`${demosBase}johnnycloud.gif`, cta:{label:"Open project", href:"#projects"} },

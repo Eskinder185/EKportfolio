@@ -11,7 +11,7 @@ import { MapPin, Globe, Calendar } from 'lucide-react';
 const AboutPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'vision' | 'expertise' | 'innovation'>('vision');
 
-  const photoUrl = `${import.meta.env.BASE_URL}eskinder.jpg`;
+  const photoUrl = `${(import.meta as any).env.BASE_URL}eskinder.jpg`;
 
   // ---- Top tabs -------------------------------------------------------------
   const visionContent = {
