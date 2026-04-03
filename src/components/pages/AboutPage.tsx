@@ -4,6 +4,7 @@ import { Badge } from '../ui/badge';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import ToolstackHeatmap from '../../sections/ToolstackHeatmap';
 import EduCerts from '../../sections/EduCerts';
+import AboutCertifications from '../../sections/AboutCertifications';
 import PageLayout from '../PageLayout';
 import ScrollReveal from '../ScrollReveal';
 import { MapPin, Globe, Calendar } from 'lucide-react';
@@ -149,6 +150,12 @@ const AboutPage: React.FC = () => {
       <ScrollReveal>
         <div className="mb-20">
           <ToolstackHeatmap />
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <div className="mb-20">
+          <AboutCertifications />
         </div>
       </ScrollReveal>
 

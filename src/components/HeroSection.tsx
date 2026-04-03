@@ -10,7 +10,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const handleResumeClick = () => {
-    window.open('https://drive.google.com/file/d/1HlszDCCB0-5d97KdFlKHqmg81xWTsVvX/view?usp=drive_link', '_blank');
+    window.open('https://drive.google.com/file/d/1MsrbPdpOz_B41ajf5lxulI85BH-SvA50/view?usp=drive_link', '_blank');
   };
 
   return (
