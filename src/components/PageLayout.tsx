@@ -21,7 +21,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
 }) => {
   return (
     <div className={PAGE_WRAPPER_CLASS}>
-      <div className={`${MAX_WIDTH[maxWidth]} ${className}`.trim()}>
+      <div className={`${MAX_WIDTH[maxWidth]} w-full min-w-0 max-w-full ${className}`.trim()}>
         {children}
       </div>
     </div>

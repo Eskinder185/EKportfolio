@@ -81,7 +81,7 @@ function AppContent() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="min-h-[60vh]"
+              className="min-h-[60vh] w-full min-w-0 max-w-full"
             >
               {renderCurrentPage()}
             </motion.div>

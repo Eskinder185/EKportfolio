@@ -110,7 +110,7 @@ const AboutPage: React.FC = () => {
             </div>
 
             <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as typeof activeTab)} className="w-full">
-              <TabsList className="grid w-full grid-cols-3 bg-white/5 border border-white/10">
+              <TabsList className="grid w-full grid-cols-3 border border-[color:var(--border-subtle)] bg-[var(--surface-card)] shadow-[var(--shadow-inset-soft)]">
                 <TabsTrigger value="vision" className="data-[state=active]:bg-violet-500 data-[state=active]:text-white">
                   Vision
                 </TabsTrigger>

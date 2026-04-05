@@ -4,7 +4,7 @@
  */
 
 /** Root wrapper for every non-hero page (clears fixed nav, consistent padding) */
-export const PAGE_WRAPPER_CLASS = 'min-h-screen pt-24 pb-20 px-6';
+export const PAGE_WRAPPER_CLASS = 'min-h-screen pt-24 pb-24 px-5 sm:px-8';
 
 /** Content container max-widths */
 export const MAX_WIDTH = {

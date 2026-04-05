@@ -70,7 +70,7 @@ export default function AboutCertifications() {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-8 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-8 p-6 rounded-2xl border border-[color:var(--border-subtle)] bg-[var(--surface-card)] shadow-[var(--shadow-inset-soft)] backdrop-blur-sm">
             <div className="text-center">
               <div className="text-2xl font-bold text-white">{certifications.length}</div>
               <div className="text-sm text-gray-400">Credentials</div>

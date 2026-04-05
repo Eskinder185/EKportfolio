@@ -128,9 +128,9 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <PageLayout maxWidth="default">
-      <ScrollReveal>
-        <div className="text-center mb-16">
+    <PageLayout maxWidth="default" className="min-w-0">
+      <ScrollReveal className="w-full min-w-0 max-w-full">
+        <div className="text-center mb-16 px-0">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Get In <span className="gradient-text">Touch</span>
           </h1>
@@ -141,10 +141,10 @@ const ContactPage: React.FC = () => {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal>
-        <div className="grid lg:grid-cols-2 gap-16">
+      <ScrollReveal className="w-full min-w-0 max-w-full">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 w-full min-w-0 max-w-full">
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-8 min-w-0 max-w-full">
             <div>
               <h2 className="text-3xl font-bold mb-6">
                 Let’s Start a <span className="gradient-text">Conversation</span>
@@ -157,33 +157,33 @@ const ContactPage: React.FC = () => {
 
             {/* Contact Methods */}
             <div className="space-y-6">
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-200">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-violet-500 to-purple-600 flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-white" />
+              <div className="flex items-start sm:items-center gap-3 sm:gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-200 min-w-0 max-w-full">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 shrink-0 rounded-full bg-gradient-to-r from-violet-500 to-purple-600 flex items-center justify-center">
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <h3 className="font-semibold text-white mb-1">Email</h3>
-                  <p className="text-gray-400">eskinderkassahun25@gmail.com</p>
+                  <p className="text-gray-400 break-all sm:break-words text-sm sm:text-base">eskinderkassahun25@gmail.com</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-200">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-white" />
+              <div className="flex items-start sm:items-center gap-3 sm:gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-200 min-w-0 max-w-full">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 shrink-0 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <h3 className="font-semibold text-white mb-1">Location</h3>
-                  <p className="text-gray-400">Atlanta, GA (Remote Worldwide)</p>
+                  <p className="text-gray-400 break-words text-sm sm:text-base">Atlanta, GA (Remote Worldwide)</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-200">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-white" />
+              <div className="flex items-start sm:items-center gap-3 sm:gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-200 min-w-0 max-w-full">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 shrink-0 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 flex items-center justify-center">
+                  <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <h3 className="font-semibold text-white mb-1">Response Time</h3>
-                  <p className="text-gray-400">Usually within 24 hours</p>
+                  <p className="text-gray-400 break-words text-sm sm:text-base">Usually within 24 hours</p>
                 </div>
               </div>
             </div>
@@ -191,7 +191,7 @@ const ContactPage: React.FC = () => {
             {/* Social Links */}
             <div>
               <h3 className="text-xl font-bold mb-4">Connect on Social</h3>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-3 sm:gap-4">
                 <button
                   onClick={() => handleSocialClick('https://github.com/Eskinder185')}
                   className="group p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 transition-all duration-200"
@@ -219,7 +219,7 @@ const ContactPage: React.FC = () => {
             </div>
 
             {/* Availability */}
-            <div className="p-6 rounded-2xl bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20">
+            <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 min-w-0 max-w-full">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
                 <h3 className="font-bold text-green-400">Currently Available</h3>
@@ -232,7 +232,7 @@ const ContactPage: React.FC = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="relative p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+          <div className="relative p-4 sm:p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm w-full min-w-0 max-w-full overflow-hidden">
             <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
 
             {isSubmitted ? (
@@ -263,8 +263,8 @@ const ContactPage: React.FC = () => {
                   aria-hidden="true"
                 />
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-w-0">
+                  <div className="min-w-0">
                     <label className="block text-sm font-semibold text-gray-300 mb-2">Full Name *</label>
                     <Input
                       type="text"
@@ -273,13 +273,13 @@ const ContactPage: React.FC = () => {
                       aria-describedby={errors.name ? 'name-error' : undefined}
                       value={formData.name}
                       onChange={(e) => handleInputChange('name', e.target.value)}
-                      className="bg-white/5 border-white/20 focus:border-violet-500 text-white placeholder-gray-400"
+                      className="w-full min-w-0 max-w-full bg-white/5 border-white/20 focus:border-violet-500 text-white placeholder-gray-400"
                       placeholder="John Doe"
                     />
                     {errors.name && <p id="name-error" className="mt-2 text-sm text-red-400">{errors.name}</p>}
                   </div>
 
-                  <div>
+                  <div className="min-w-0">
                     <label className="block text-sm font-semibold text-gray-300 mb-2">Email Address *</label>
                     <Input
                       type="email"
@@ -289,20 +289,20 @@ const ContactPage: React.FC = () => {
                       aria-describedby={errors.email ? 'email-error' : undefined}
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
-                      className="bg-white/5 border-white/20 focus:border-violet-500 text-white placeholder-gray-400"
+                      className="w-full min-w-0 max-w-full bg-white/5 border-white/20 focus:border-violet-500 text-white placeholder-gray-400"
                       placeholder="john@example.com"
                     />
                     {errors.email && <p id="email-error" className="mt-2 text-sm text-red-400">{errors.email}</p>}
                   </div>
                 </div>
 
-                <div>
+                <div className="min-w-0 max-w-full">
                   <label className="block text-sm font-semibold text-gray-300 mb-2">Project Type</label>
                   <Select
                     value={formData.projectType}
                     onValueChange={(v) => handleInputChange('projectType', v as ProjectType)}
                   >
-                    <SelectTrigger className="bg-white/5 border-white/20 focus:border-violet-500 text-white">
+                    <SelectTrigger className="w-full max-w-full min-w-0 bg-white/5 border-white/20 focus:border-violet-500 text-white">
                       <SelectValue placeholder="What kind of project are you working on?" />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-900 border-white/20">
@@ -317,7 +317,7 @@ const ContactPage: React.FC = () => {
                   </Select>
                 </div>
 
-                <div>
+                <div className="min-w-0 max-w-full">
                   <label className="block text-sm font-semibold text-gray-300 mb-2">Project Details *</label>
                   <Textarea
                     required
@@ -325,7 +325,7 @@ const ContactPage: React.FC = () => {
                     aria-describedby={errors.message ? 'message-error' : undefined}
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
-                    className="bg-white/5 border-white/20 focus:border-violet-500 text-white placeholder-gray-400 min-h-[140px]"
+                    className="w-full max-w-full min-w-0 bg-white/5 border-white/20 focus:border-violet-500 text-white placeholder-gray-400 min-h-[140px]"
                     placeholder="Tell me about your goals, timeline, budget range, and any specific requirements or constraints..."
                   />
                   {errors.message && <p id="message-error" className="mt-2 text-sm text-red-400">{errors.message}</p>}
@@ -370,9 +370,9 @@ const ContactPage: React.FC = () => {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal>
-        <div className="mt-20 text-center">
-          <div className="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+      <ScrollReveal className="w-full min-w-0 max-w-full">
+        <div className="mt-16 sm:mt-20 text-center w-full min-w-0 px-0">
+          <div className="p-4 sm:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm w-full min-w-0 max-w-full mx-auto">
             <h3 className="text-xl font-bold mb-4">Prefer a Quick Call?</h3>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
               Sometimes it’s easier to discuss project requirements over a call.

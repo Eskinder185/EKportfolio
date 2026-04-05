@@ -87,11 +87,11 @@ const AnimatedBackground: React.FC = () => {
     const animation = prefersReducedMotion ? undefined : 'mesh-shift 160s ease-in-out infinite';
     return {
       background: `
-        radial-gradient(ellipse 65% 55% at 45% 22%, rgba(139, 92, 246, 0.14) 0%, rgba(139, 92, 246, 0.04) 44%, transparent 72%),
-        radial-gradient(ellipse 55% 48% at 78% 65%, rgba(34, 211, 238, 0.10) 0%, rgba(34, 211, 238, 0.03) 42%, transparent 78%)
+        radial-gradient(ellipse 65% 55% at 45% 22%, rgba(139, 92, 246, 0.11) 0%, rgba(139, 92, 246, 0.035) 44%, transparent 72%),
+        radial-gradient(ellipse 55% 48% at 78% 65%, rgba(34, 211, 238, 0.08) 0%, rgba(34, 211, 238, 0.025) 42%, transparent 78%)
       `,
       backgroundSize: '220% 220%',
-      opacity: 0.95,
+      opacity: 0.88,
       animation,
       willChange: 'background-position',
     } as React.CSSProperties;
@@ -137,13 +137,13 @@ const AnimatedBackground: React.FC = () => {
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            repeating-linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px),
-            repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 1px, transparent 1px),
-            repeating-linear-gradient(45deg, rgba(34,211,238,0.035) 1px, transparent 1px)
+            repeating-linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px),
+            repeating-linear-gradient(0deg, rgba(255,255,255,0.026) 1px, transparent 1px),
+            repeating-linear-gradient(45deg, rgba(34,211,238,0.028) 1px, transparent 1px)
           `,
           backgroundSize: '72px 72px, 72px 72px, 144px 144px',
           backgroundPosition: '0 0, 0 0, 0 0',
-          opacity: 0.07,
+          opacity: 0.055,
           animation: prefersReducedMotion ? undefined : 'mesh-shift 210s ease-in-out infinite',
           willChange: 'background-position',
           maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 78%)',

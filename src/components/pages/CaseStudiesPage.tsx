@@ -108,14 +108,87 @@ const CaseStudiesPage: React.FC = () => {
       scope: 'Proxmox virtualization, network segmentation, storage, and monitoring in a home-lab setup.',
       product: 'Documented hybrid lab with Proxmox, Linux, and AWS-style concepts for training and demos.',
     },
+    {
+      id: 'orthodoxpath',
+      title: 'OrthodoxPath — Faith-Centered Learning Platform',
+      subtitle:
+        'A practice-first Ethiopian Orthodox learning experience: guided prayer and mezmur workflows, language support, liturgical calendar awareness, and respectful link-out to trusted sources.',
+      category: 'Product / UX / EdTech',
+      duration: 'Concept & prototype',
+      team: 'Solo Developer',
+      client: 'Personal Project',
+      image: img('ortho.jpg'),
+      technologies: [
+        'React',
+        'Vite',
+        'Modular pages',
+        'Component architecture',
+        'Content-driven UI',
+        'YouTube embed workflow',
+        'Calendar data model (planned)',
+      ],
+      challenge:
+        'Religious sites often behave as static archives: scattered materials, weak learning paths, missing memorization tools, and copyright barriers to hosting prayer, mezmur, and liturgy directly. Ethiopian Orthodox learners—especially in the diaspora—also face language friction (Amharic / Ge’ez) and calendar complexity without a single calm, structured place to practice.',
+      success: [
+        'Practice-first positioning reduces copyright risk while staying useful',
+        'Clear split: original guidance on-platform, sacred texts via trusted external links',
+        'Mezmur Practice Workspace: listen, paste lyrics, replay, and memorize in one flow',
+        'IA reads as a real learning product (Home → Learn → Practice → Language → Calendar → Progress)',
+      ],
+      diagram:
+        'IA: Home | Learn | Practice | Language | Calendar | Progress. Practice hub: prepare → listen → repeat → read → memorize → review. External resources: open originals in new tab (prayers, mezmur, liturgy PDFs, pronunciation, alphabet tools). Calendar: Gregorian ↔ Ethiopian date, fasting, feasts, weekday themes (data-driven roadmap).',
+      decisions: [
+        'Practice-first platform, not a copied-content repository',
+        'Original summaries + structured flows + memorization support instead of reproducing restricted texts',
+        'User-controlled workspace (paste lyrics + embed video) for legal, interactive study',
+        'Respectful gamification: streaks, milestones, paths—no loud or childish mechanics',
+      ],
+      security: [
+        'Copyright-aware design: link-out strategy for protected prayer, mezmur, audio, and PDFs',
+        'Transparent separation between platform copy and third-party sources',
+      ],
+      results: [
+        'Demonstrates product thinking across strategy, UX, IA, and front-end planning under real constraints',
+        'Turned content limitations into a clearer, more defensible portfolio narrative',
+        'Scoped a scalable path: richer practice, calendar data, progress persistence, and habit features',
+      ],
+      keyFeatures: [
+        'Six-section IA: Home, Learn, Practice, Language, Calendar, Progress',
+        'Practice flows with guided steps (prepare, listen, repeat, read, memorize, review)',
+        'Mezmur Practice Workspace: lyrics area + YouTube embed, replay, chunking, memorization',
+        'External resource system: trusted links in new tabs for prayers, mezmur, liturgy, media',
+        'Calendar direction: Ethiopian ↔ Gregorian, fasting, feasts, weekday meaning, seasons',
+        'Language support framing: alphabet, writing, pronunciation alongside faith content',
+        'Progress area for paths, consistency, milestones, and review habits (roadmap)',
+        'Three-layer content model: original copy, external resources, structured calendar data',
+      ],
+      technicalHighlights: [
+        'React + Vite with modular pages and reusable layout/section components',
+        'Separation of content and layout for maintainable page text and future data',
+        'Embedded YouTube workflow for listen-along / transcription-style practice',
+        'Future-ready Ethiopian Orthodox calendar data model and display layers',
+        'Foundation for session persistence, notes, and gentle gamification without scope creep in v1',
+      ],
+      githubUrl: 'https://github.com/Eskinder185/OrthodoxPath',
+      liveUrl: 'https://orthodoxpath.pages.dev/',
+      impact: [
+        'Copyright-safe architecture: learning value without hosting restricted liturgical corpora',
+        'Single structured product story for beginners, returning learners, and diaspora audiences',
+        'Interactive differentiator (Mezmur workspace) vs. typical static religious sites',
+      ],
+      scope:
+        'End-to-end concept for a calm, respectful learning companion: six top-level destinations, practice-centric flows, Amharic/Ge’ez support, Ethiopian calendar education, progress tracking hooks, and a content strategy that balances originality, reverence, and legal reuse boundaries.',
+      product:
+        'OrthodoxPath is a guided, practice-first web experience—original intros and workflows on-site, sacred and copyrighted materials reached through curated external links, plus a roadmap for calendar logic, memorization engines, and habit-based engagement tuned for faith-appropriate tone.',
+    },
   ];
 
   const handleExternalLink = (url: string) => window.open(url, '_blank');
   const handleStudySelect = (studyId: string) => setSelectedStudy((curr) => (curr === studyId ? null : studyId));
 
   return (
-    <PageLayout maxWidth="default">
-      <ScrollReveal>
+    <PageLayout maxWidth="default" className="min-w-0">
+      <ScrollReveal className="w-full min-w-0 max-w-full">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Case <span className="gradient-text">Studies</span>
@@ -126,21 +199,21 @@ const CaseStudiesPage: React.FC = () => {
         </div>
       </ScrollReveal>
 
-      <div className="space-y-16">
+      <div className="space-y-16 w-full min-w-0 max-w-full">
         {caseStudies.map((study, index) => (
-          <ScrollReveal key={study.id} staggerIndex={index}>
-            <article className="rounded-2xl glass-panel border border-white/10 overflow-hidden">
-              <div className="grid lg:grid-cols-5 gap-0">
+          <ScrollReveal key={study.id} staggerIndex={index} className="w-full min-w-0 max-w-full">
+            <article className="rounded-2xl glass-panel border border-white/10 overflow-hidden w-full min-w-0 max-w-full">
+              <div className="grid lg:grid-cols-5 gap-0 w-full min-w-0">
                 {/* Visual: image */}
-                <div className="lg:col-span-2 relative">
+                <div className="lg:col-span-2 relative min-w-0">
                   <div className="relative h-56 lg:min-h-[220px] overflow-hidden">
                     <ImageWithFallback
                       src={`${study.image}?v=1`}
                       alt={study.title}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-4 left-4">
-                      <Badge className="px-3 py-1 bg-gradient-to-r from-violet-500 to-cyan-500 text-white border-none">
+                    <div className="absolute top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-auto max-w-[calc(100%-1.5rem)] sm:max-w-[min(100%,20rem)]">
+                      <Badge className="px-3 py-1.5 bg-gradient-to-r from-violet-500 to-cyan-500 text-white border-none !whitespace-normal text-left leading-snug max-w-full min-w-0 shrink items-start justify-start h-auto">
                         {study.category}
                       </Badge>
                     </div>
@@ -148,14 +221,14 @@ const CaseStudiesPage: React.FC = () => {
                 </div>
 
                 {/* Linear Story: Impact + Scope + Product */}
-                <div className="lg:col-span-3 p-6 lg:p-8 flex flex-col">
-                  <h2 className="text-2xl font-bold mb-2">{study.title}</h2>
-                  <p className="text-gray-300 text-sm mb-6">{study.subtitle}</p>
+                <div className="lg:col-span-3 p-4 sm:p-6 lg:p-8 flex flex-col min-w-0 max-w-full">
+                  <h2 className="text-xl sm:text-2xl font-bold mb-2 break-words">{study.title}</h2>
+                  <p className="text-gray-300 text-sm mb-6 break-words">{study.subtitle}</p>
 
-                  <div className="grid grid-cols-3 gap-2 mb-6 text-xs text-gray-400">
-                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {study.duration}</span>
-                    <span className="flex items-center gap-1"><Users className="w-3 h-3" /> {study.team}</span>
-                    <span className="flex items-center gap-1"><Target className="w-3 h-3" /> {study.client}</span>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 text-xs text-gray-400">
+                    <span className="flex items-center gap-1.5 min-w-0"><Clock className="w-3 h-3 shrink-0" /> <span className="break-words">{study.duration}</span></span>
+                    <span className="flex items-center gap-1.5 min-w-0"><Users className="w-3 h-3 shrink-0" /> <span className="break-words">{study.team}</span></span>
+                    <span className="flex items-center gap-1.5 min-w-0"><Target className="w-3 h-3 shrink-0" /> <span className="break-words">{study.client}</span></span>
                   </div>
 
                   <div className="space-y-6 flex-1">
@@ -165,9 +238,9 @@ const CaseStudiesPage: React.FC = () => {
                       </h3>
                       <ul className="space-y-1">
                         {study.impact.map((m, i) => (
-                          <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
-                            <span className="text-emerald-400 mt-0.5">•</span>
-                            {m}
+                          <li key={i} className="text-gray-300 text-sm flex items-start gap-2 min-w-0">
+                            <span className="text-emerald-400 mt-0.5 shrink-0">•</span>
+                            <span className="break-words min-w-0">{m}</span>
                           </li>
                         ))}
                       </ul>
@@ -177,14 +250,14 @@ const CaseStudiesPage: React.FC = () => {
                       <h3 className="flex items-center gap-2 text-sm font-semibold text-cyan-300 uppercase tracking-wider mb-2">
                         Scope
                       </h3>
-                      <p className="text-gray-300 text-sm leading-relaxed">{study.scope}</p>
+                      <p className="text-gray-300 text-sm leading-relaxed break-words">{study.scope}</p>
                     </section>
 
                     <section>
                       <h3 className="flex items-center gap-2 text-sm font-semibold text-amber-300/90 uppercase tracking-wider mb-2">
                         <Package className="w-4 h-4" /> Product
                       </h3>
-                      <p className="text-gray-300 text-sm leading-relaxed">{study.product}</p>
+                      <p className="text-gray-300 text-sm leading-relaxed break-words">{study.product}</p>
                     </section>
                   </div>
 
@@ -201,32 +274,34 @@ const CaseStudiesPage: React.FC = () => {
                     )}
                   </div>
 
-                  <div className="flex gap-3 mt-6">
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-6 w-full min-w-0">
                     <Button
                       onClick={() => handleStudySelect(study.id)}
-                      className="bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white font-semibold rounded-full"
+                      className="w-full sm:w-auto bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white font-semibold rounded-full shrink-0"
                     >
-                      <span className="flex items-center gap-2">
+                      <span className="flex items-center justify-center gap-2 text-center">
                         {selectedStudy === study.id ? 'Hide Details' : 'Read Full Case Study'}
-                        <ArrowRight className={`w-4 h-4 ${selectedStudy === study.id ? 'rotate-90' : ''}`} />
+                        <ArrowRight className={`w-4 h-4 shrink-0 ${selectedStudy === study.id ? 'rotate-90' : ''}`} />
                       </span>
                     </Button>
+                    <div className="flex flex-wrap gap-2 sm:gap-3 w-full sm:w-auto min-w-0">
                     {study.githubUrl && (
                       <Button
                         onClick={() => handleExternalLink(study.githubUrl!)}
                         variant="outline"
                         size="sm"
-                        className="border-white/20 hover:border-violet-500/50 text-gray-300"
+                        className="flex-1 sm:flex-initial min-w-[7rem] border-white/20 hover:border-violet-500/50 text-gray-300"
                       >
-                        <ExternalLink className="w-4 h-4 mr-2" />
+                        <ExternalLink className="w-4 h-4 mr-2 shrink-0" />
                         Repo
                       </Button>
                     )}
                     {study.liveUrl && (
-                      <Button onClick={() => handleExternalLink(study.liveUrl!)} size="sm" className="bg-cyan-500 hover:bg-cyan-600 text-white">
+                      <Button onClick={() => handleExternalLink(study.liveUrl!)} size="sm" className="flex-1 sm:flex-initial min-w-[7rem] bg-cyan-500 hover:bg-cyan-600 text-white">
                         Live Demo
                       </Button>
                     )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -234,87 +309,93 @@ const CaseStudiesPage: React.FC = () => {
               {/* Expandable details (existing structure) */}
               {selectedStudy === study.id && (
                 <motion.div
-                  className="border-t border-white/10 bg-white/5 p-8"
+                  className="border-t border-white/10 bg-white/5 p-4 sm:p-6 md:p-8 w-full min-w-0 max-w-full"
                   initial="hidden"
                   animate="visible"
                   variants={fadeInUp}
                 >
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="space-y-6">
-                      <div>
+                  <div className="grid md:grid-cols-2 gap-6 md:gap-8 min-w-0">
+                    <div className="space-y-6 min-w-0">
+                      <div className="min-w-0">
                         <h3 className="text-lg font-bold mb-2 text-red-400">The Problem</h3>
-                        <p className="text-gray-300 leading-relaxed text-sm">{study.challenge}</p>
+                        <p className="text-gray-300 leading-relaxed text-sm break-words">{study.challenge}</p>
                       </div>
                       {study.diagram && (
-                        <div>
+                        <div className="min-w-0">
                           <h3 className="text-lg font-bold mb-2 text-blue-400">Architecture</h3>
-                          <p className="text-gray-300 font-mono text-sm">{study.diagram}</p>
+                          <p className="text-gray-300 font-mono text-xs sm:text-sm break-words whitespace-pre-wrap">{study.diagram}</p>
                         </div>
                       )}
                       <div>
                         <h3 className="text-lg font-bold mb-2 text-violet-400">Key Features</h3>
                         <ul className="space-y-1 text-sm text-gray-300">
                           {study.keyFeatures.map((f, i) => (
-                            <li key={i} className="flex items-start gap-2">
-                              <span className="text-violet-400">•</span> {f}
+                            <li key={i} className="flex items-start gap-2 min-w-0">
+                              <span className="text-violet-400 shrink-0">•</span>
+                              <span className="break-words min-w-0">{f}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
                     </div>
-                    <div className="space-y-6">
+                    <div className="space-y-6 min-w-0">
                       {study.success?.length ? (
-                        <div>
+                        <div className="min-w-0">
                           <h3 className="text-lg font-bold mb-2 text-teal-400">Success Metrics</h3>
                           <ul className="space-y-1 text-sm text-gray-300">
                             {study.success.map((s, i) => (
-                              <li key={i} className="flex items-start gap-2">
-                                <span className="text-emerald-400">•</span> {s}
+                              <li key={i} className="flex items-start gap-2 min-w-0">
+                                <span className="text-emerald-400 shrink-0">•</span>
+                                <span className="break-words min-w-0">{s}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
                       ) : null}
                       {study.decisions?.length ? (
-                        <div>
+                        <div className="min-w-0">
                           <h3 className="text-lg font-bold mb-2 text-orange-400">Key Decisions</h3>
                           <ul className="space-y-1 text-sm text-gray-300">
                             {study.decisions.map((d, i) => (
-                              <li key={i} className="flex items-start gap-2">
-                                <span className="text-amber-400">•</span> {d}
+                              <li key={i} className="flex items-start gap-2 min-w-0">
+                                <span className="text-amber-400 shrink-0">•</span>
+                                <span className="break-words min-w-0">{d}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
                       ) : null}
                       {study.security?.length ? (
-                        <div>
+                        <div className="min-w-0">
                           <h3 className="text-lg font-bold mb-2 text-pink-400">Security</h3>
                           <ul className="space-y-1 text-sm text-gray-300">
                             {study.security.map((sec, i) => (
-                              <li key={i} className="flex items-start gap-2">
-                                <span className="text-fuchsia-400">•</span> {sec}
+                              <li key={i} className="flex items-start gap-2 min-w-0">
+                                <span className="text-fuchsia-400 shrink-0">•</span>
+                                <span className="break-words min-w-0">{sec}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
                       ) : null}
-                      <div>
+                      <div className="min-w-0">
                         <h3 className="text-lg font-bold mb-2 text-cyan-400">Results</h3>
                         <ul className="space-y-1 text-sm text-gray-300">
                           {study.results.map((r, i) => (
-                            <li key={i} className="flex items-start gap-2">
-                              <span className="text-cyan-400">•</span> {r}
+                            <li key={i} className="flex items-start gap-2 min-w-0">
+                              <span className="text-cyan-400 shrink-0">•</span>
+                              <span className="break-words min-w-0">{r}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <h3 className="text-lg font-bold mb-2 text-indigo-400">Technical Highlights</h3>
                         <ul className="space-y-1 text-sm text-gray-300">
                           {study.technicalHighlights.map((t, i) => (
-                            <li key={i} className="flex items-start gap-2">
-                              <span className="text-indigo-400">•</span> {t}
+                            <li key={i} className="flex items-start gap-2 min-w-0">
+                              <span className="text-indigo-400 shrink-0">•</span>
+                              <span className="break-words min-w-0">{t}</span>
                             </li>
                           ))}
                         </ul>

@@ -69,10 +69,10 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate }) => {
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`relative flex items-center justify-center w-10 h-10 rounded-xl transition-colors duration-200 ${
+                className={`relative flex items-center justify-center w-10 h-10 rounded-[var(--radius-ui)] transition-colors duration-200 ${
                   isActive
-                    ? 'text-[var(--accent)] bg-white/10'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'text-[var(--accent)] bg-white/[0.1] shadow-[var(--shadow-inset-soft)]'
+                    : 'text-gray-400 hover:text-white hover:bg-white/[0.06]'
                 }`}
                 title={item.label}
                 aria-label={item.label}
@@ -111,7 +111,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate }) => {
                 key={item.id}
                 data-nav-tab
                 onClick={() => onNavigate(item.id)}
-                className={`relative z-10 flex flex-col items-center justify-center min-w-[40px] min-h-[40px] rounded-xl transition-colors duration-200 ${
+                className={`relative z-10 flex flex-col items-center justify-center min-w-[40px] min-h-[40px] rounded-[var(--radius-ui)] transition-colors duration-200 ${
                   isActive ? 'text-[var(--accent)]' : 'text-gray-400 active:text-white'
                 }`}
                 aria-label={item.label}
