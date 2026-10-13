@@ -2,10 +2,10 @@ import React from 'react';
 
 const StatsRow: React.FC = () => {
   const stats = [
-    { number: '1200+', label: 'Hours Training' },
-    { number: '10+', label: 'Projects Built' },
-    { number: '3+', label: 'Years Hands-On Experience' },
-    { number: '25+', label: 'Technologies Mastered' },
+    { number: '39', label: 'Public Repositories' },
+    { number: '7', label: 'Public Project Frontends' },
+    { number: 'AWS', label: 'Cloud Training' },
+    { number: 'CS', label: 'Computer Science Background' },
   ];
 
   return (

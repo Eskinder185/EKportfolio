@@ -1,3 +1,5 @@
+import { projectCoverUrl } from '../../data/project-covers';
+import { projectUpdates, featuredProjectIds, primaryProjectOrder, verifiedProjectLinks } from '../../data/portfolio-updates';
 import React, { useMemo, useState } from 'react';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -7,7 +9,7 @@ import PageLayout from '../PageLayout';
 import ScrollReveal from '../ScrollReveal';
 
 type Category = 'all' | 'frontend' | 'backend' | 'cloud' | 'ai-ml';
-type Project = {
+export type Project = {
   id: string;
   title: string;
   description: string;
@@ -240,7 +242,32 @@ const ProjectsPage: React.FC = () => {
       scope: 'OpenGL scene with geometry, lighting, and interactive camera.',
       product: 'C++ OpenGL application with configurable 3D scene.',
     },
+    ...projectUpdates
   ];
+
+  const orderedProjects = projects.map(project => ({
+    ...project,
+    image: projectCoverUrl(project.id, project.image),
+    featured: featuredProjectIds.includes(project.id),
+    githubUrl: verifiedProjectLinks[project.id] ?? project.githubUrl,
+    ...(project.id === 'johnnycloud-vpc-ec2' ? {
+      title:'JohnnyCloud — AWS FinOps & SecOps',
+      description:'AWS cost and security dashboard with React/Vite frontend and source-defined serverless integrations.',
+      technologies:['AWS','React','Lambda','GuardDuty','Security Hub','Cost Explorer','Bedrock','Cognito'],
+      impact:['Repository documentation describes cost trends, security findings and AI-assisted summaries.','Source is available; current AWS deployment and authenticated feature health are not independently verified.'],
+      scope:'README architecture: React/Vite frontend, Cognito identity, API Gateway/Lambda, Cost Explorer, GuardDuty/Security Hub and optional Bedrock/Polly.',
+      product:'JohnnyCloud source and the original retained demo. The historical serverless case study remains available without rewriting its technical narrative.'
+    } : {}),
+    ...(project.id === 'professionaldev' ? {
+      description: 'ProfessionalDev / Roadmap to Role: a career-development workspace for self-assessment, resume and LinkedIn preparation, interview practice and productivity.',
+      scope: 'Self-assessment, resume/LinkedIn tools, STAR practice, elevator pitches, portfolio planning and career roadmaps.',
+      product: 'React/Vite career-development application with an observed public frontend and project documentation.',
+      impact: ['Main application project identified by the owner.','Career-growth tools and workflows documented in the repository README.']
+    } : {})
+  })).sort((a,b) => {
+    const rank = (id:string) => { const position = primaryProjectOrder.indexOf(id); return position < 0 ? primaryProjectOrder.length : position; };
+    return rank(a.id)-rank(b.id);
+  });
 
   const handleExternalLink = (url?: string | null) => {
     if (!url) return;
@@ -248,9 +275,9 @@ const ProjectsPage: React.FC = () => {
   };
 
   const filteredProjects = useMemo(() => {
-    if (activeFilter === 'all') return projects;
-    return projects.filter((p) => p.categories.includes(activeFilter as Exclude<Category, 'all'>));
-  }, [activeFilter, projects]);
+    if (activeFilter === 'all') return orderedProjects;
+    return orderedProjects.filter((p) => p.categories.includes(activeFilter as Exclude<Category, 'all'>));
+  }, [activeFilter, orderedProjects]);
 
   return (
     <PageLayout maxWidth="wide">

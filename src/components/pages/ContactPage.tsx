@@ -183,7 +183,7 @@ const ContactPage: React.FC = () => {
                 </div>
                 <div className="min-w-0 flex-1">
                   <h3 className="font-semibold text-white mb-1">Response Time</h3>
-                  <p className="text-gray-400 break-words text-sm sm:text-base">Usually within 24 hours</p>
+                  <p className="text-gray-400 break-words text-sm sm:text-base">Direct follow-up by email</p>
                 </div>
               </div>
             </div>
@@ -240,7 +240,7 @@ const ContactPage: React.FC = () => {
                 <CheckCircle className="w-20 h-20 text-green-400 mx-auto mb-6" />
                 <h4 className="text-2xl font-bold text-green-400 mb-4">Message Sent Successfully!</h4>
                 <p className="text-gray-300 mb-6 leading-relaxed">
-                  Thanks for reaching out! I’ll review your message and get back to you within 24 hours.
+                  Review and send the draft in your email application.
                 </p>
                 <Button
                   onClick={handleBackToTop}
@@ -339,7 +339,7 @@ const ContactPage: React.FC = () => {
 
                 {cooldownLeft > 0 && (
                   <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-200 text-sm">
-                    You recently sent a message. You can submit again in ~
+                    You recently opened a draft. You can open another in ~
                     {Math.ceil(cooldownLeft / 1000)}s.
                   </div>
                 )}
@@ -357,7 +357,7 @@ const ContactPage: React.FC = () => {
                   ) : (
                     <div className="flex items-center gap-3">
                       <Send className="w-5 h-5" />
-                      Send Message
+                      Open Email Draft
                     </div>
                   )}
                 </Button>
@@ -376,7 +376,7 @@ const ContactPage: React.FC = () => {
             <h3 className="text-xl font-bold mb-4">Prefer a Quick Call?</h3>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
               Sometimes it’s easier to discuss project requirements over a call.
-              I’m available for free 30-minute consultations to explore how we can work together.
+              Send a note about the role or project, and we can coordinate a time by email.
             </p>
             <Button
               onClick={() =>
@@ -388,7 +388,7 @@ const ContactPage: React.FC = () => {
               className="border-2 border-white/20 bg-transparent hover:bg-white/5 text-white font-semibold py-3 px-6 rounded-full transition-all duration-200 hover:scale-105 hover:border-cyan-500/50 group"
             >
               <div className="flex items-center gap-2">
-                Schedule a Call
+                Request a Call
                 <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </div>
             </Button>

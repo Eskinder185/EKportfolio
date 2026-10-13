@@ -2,9 +2,11 @@
 const demosBase = (import.meta as any).env.BASE_URL + 'demos/';
 type Clip = { title:string; caption:string; src?:string; placeholder?:boolean; cta?:{label:string; href:string} };
 const clips: Clip[] = [
-  { title:"JohnnyCloud", caption:"GuardDuty alert pops into dashboard", src:`${demosBase}johnnycloud.gif`, cta:{label:"Open project", href:"#projects"} },
-  { title:"AstraFocusNexus", caption:"AI-powered productivity dashboard with focus tracking, task management, and performance insights.", src:`${demosBase}AstraFocusNexus.gif`, cta:{label:"Open project", href:"#projects"} },
-  { title:"CodeRush", caption:"Interactive coding practice platform built to improve speed, accuracy, and language fluency.", src:`${demosBase}CodeRush.gif`, cta:{label:"Open project", href:"#projects"} },
+  { title:"Home Lab — Red Team / Blue Team", caption:"Featured · Owner-reported security practice lab. AI-generated cover based on the lab project.", src:`${(import.meta as any).env.BASE_URL}images/project-covers-v2/hybrid-cloud-security-lab.webp`, cta:{label:"Open project", href:"https://github.com/Eskinder185/Hybrid-Cloud-Security-Lab"} },
+  { title:"ECAA Bilingual Community Website", caption:"Featured · English/Amharic community website. Actual local development preview, not a production screenshot.", src:`${(import.meta as any).env.BASE_URL}images/projects/ecaa-local-preview.png`, cta:{label:"Open project", href:"https://github.com/Eskinder185/ethiopian-community-atlanta"} },
+  { title:"JohnnyCloud", caption:"GuardDuty alert pops into dashboard", src:`${demosBase}johnnycloud.gif`, cta:{label:"Open project", href:"https://github.com/Eskinder185/JohnnyCloud"} },
+  { title:"AstraFocusNexus", caption:"Original animated project preview.", src:`${demosBase}AstraFocusNexus.gif`, cta:{label:"Open project", href:"https://github.com/Eskinder185/AstraFocusNexus"} },
+  { title:"CodeRush", caption:"Original animated coding-practice preview.", src:`${demosBase}CodeRush.gif`, cta:{label:"Open project", href:"https://github.com/Eskinder185/CodeRush"} },
 ];
 
 export default function DemoRail() {
@@ -16,7 +18,7 @@ export default function DemoRail() {
             See It in <span className="gradient-text">Action</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            8–12s silent loops showcasing key features and interactions
+            Featured projects and original animated demos; still previews are labeled.
           </p>
         </div>
 
@@ -34,7 +36,7 @@ export default function DemoRail() {
                       {c.title} Preview Coming Soon
                     </p>
                   </div>
-                ) : c.src!.endsWith('.gif') ? (
+                ) : /\.(gif|png|jpe?g|webp)$/i.test(c.src!) ? (
                   <img
                     src={c.src}
                     alt={`${c.title} demo`}
@@ -67,6 +69,8 @@ export default function DemoRail() {
                   {c.cta && (
                     <a 
                       href={c.cta.href}
+                      target={c.cta.href.startsWith('http') ? '_blank' : undefined}
+                      rel={c.cta.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className="inline-flex items-center text-sm font-medium text-violet-400 hover:text-violet-300 transition-colors duration-300 group-hover:translate-x-1 transform"
                     >
                       {c.cta.label}

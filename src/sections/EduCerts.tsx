@@ -3,10 +3,11 @@ import React from 'react';
 import { CredentialCardItem, type CredentialCardData } from './CredentialCardItem';
 
 const education: CredentialCardData[] = [
-  { title: "B.S. Computer Science", org: "Southern New Hampshire University", icon: "🎓", gradient: "from-blue-500 to-blue-600" },
-  { title: "Cloud Practitioner (Training)", org: "Per Scholas", icon: "☁️", gradient: "from-orange-500 to-amber-600" },
-  { title: "Full-Stack Developer (Training)", org: "Springboard", icon: "💻", gradient: "from-emerald-500 to-teal-600" },
-  { title: "M.S. Cybersecurity", org: "Western Governors University (WGU)", icon: "🛡️", gradient: "from-red-500 to-rose-600", inProgress: true },
+  { title: "B.S. Computer Science", org: "Georgia State University (2021) → SNHU (Sep 2025)", icon: "🎓", gradient: "from-blue-500 to-blue-600" },
+  { title: "AWS re/Start (Training)", org: "Per Scholas · Aug–Oct 2025", icon: "☁️", gradient: "from-orange-500 to-amber-600" },
+  { title: "Full-Stack Developer (Training)", org: "Springboard · Jan–May 2025", icon: "💻", gradient: "from-emerald-500 to-teal-600" },
+  { title: "M.S. Cybersecurity and Information Assurance", org: "Western Governors University · Nov 2025–Present", icon: "🛡️", gradient: "from-red-500 to-rose-600", inProgress: true },
+  { title: "AWS Information Infrastructure Pre-Apprenticeship", org: "AWS / YUPRO · Butts County, GA · Mar–Jun 2026", icon: "🛠️", gradient: "from-cyan-500 to-blue-600" },
 ];
 
 export default function EduCerts() {

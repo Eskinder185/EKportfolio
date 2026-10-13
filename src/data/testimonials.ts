@@ -32,11 +32,9 @@ export const testimonials: Testimonial[] = [
     quote: "Working with Eskinder, I organized classes and labs with a clear focus board—less stress, better habits." },
 
   { name: "Ridhoy Ahmad", role: "Full-stack Java Developer",
-    linkedin: "https://www.linkedin.com/search/results/all/?keywords=Ridhoy%20Ahmad&origin=GLOBAL_SEARCH_HEADER&sid=dEf",
     quote: "Eskinder's ability to set a simple routine helped me ship features steadily instead of cramming." },
 
   { name: "Yohanes Tezera", role: "Mechanical Engineer",
-    linkedin: "https://www.linkedin.com/search/results/all/?keywords=Yohanes%20Tezera%20&origin=GLOBAL_SEARCH_HEADER&sid=9eX",
     quote: "Working with Eskinder, I planned CAD tasks clearly and kept reviews on schedule." },
 
   { name: "Chris K", role: "Sales Engineer",

@@ -31,18 +31,21 @@ function AppContent() {
   // Handle browser back/forward navigation
   useEffect(() => {
     const handlePopState = () => {
-      const hash = window.location.hash.replace('#', '');
+      const rawHash = window.location.hash.replace('#', '');
+      const hash = rawHash === 'learning' ? 'books' : rawHash === 'interview' ? 'experience' : rawHash;
       setCurrentPage(hash || 'home');
     };
 
     // Set initial page based on URL hash
-    const initialHash = window.location.hash.replace('#', '');
+    const rawInitialHash = window.location.hash.replace('#', '');
+    const initialHash = rawInitialHash === 'learning' ? 'books' : rawInitialHash === 'interview' ? 'experience' : rawInitialHash;
     if (initialHash) {
       setCurrentPage(initialHash);
     }
 
     window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handlePopState);
+    return () => { window.removeEventListener('popstate', handlePopState); window.removeEventListener('hashchange', handlePopState); };
   }, []);
 
 

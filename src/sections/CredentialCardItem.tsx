@@ -6,6 +6,7 @@ export type CredentialCardData = {
   icon: string;
   gradient: string;
   inProgress?: boolean;
+  verificationPending?: boolean;
 };
 
 export function CredentialCardItem({ c }: { c: CredentialCardData }) {
@@ -26,6 +27,11 @@ export function CredentialCardItem({ c }: { c: CredentialCardData }) {
         {c.inProgress && (
           <span className="rounded-md border border-amber-300/35 bg-amber-400/10 px-2 py-0.5 text-[10px] tracking-wide text-amber-200/95">
             In Progress
+          </span>
+        )}
+        {c.verificationPending && !c.inProgress && (
+          <span className="rounded-md border border-cyan-300/30 bg-cyan-400/10 px-2 py-0.5 text-[10px] tracking-wide text-cyan-100">
+            Verification link pending
           </span>
         )}
       </div>

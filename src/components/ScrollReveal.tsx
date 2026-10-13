@@ -4,6 +4,7 @@ import { scrollReveal, defaultViewport } from '../utils/animations';
 
 interface ScrollRevealProps extends Omit<MotionProps, 'initial' | 'animate' | 'whileInView' | 'viewport'> {
   children: React.ReactNode;
+  className?: string;
   /** Override viewport options */
   viewport?: { once?: boolean; margin?: string; amount?: number };
   /** Stagger index for child stagger */

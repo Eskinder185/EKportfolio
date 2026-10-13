@@ -13,13 +13,13 @@ export const projectPills: ProjectPill[] = [
   { label: "Weather App (Python)", href: "https://github.com/Eskinder185/weather" },
   { label: "Cloud Launchpad (VPC + EC2)", href: "https://github.com/Eskinder185/cloud-launchpad-vpc-ec2" },
   { label: "AWS DLP Scanner", href: "https://github.com/Eskinder185/aws-dlp-scanner" },
-  { label: "Travel Portal (Express)", href: "https://github.com/Eskinder185/travel-portal-express" }
+  { label: "Travel Portal (Express)", href: "https://github.com/Eskinder185/travlr-re" }
 ];
 
 // More projects (optional "Show more")
 export const moreProjectPills: ProjectPill[] = [
   { label: "Java Security Hardening (Artemis)", href: "https://github.com/Eskinder185/java-security-hardening-artemis" },
-  { label: "Java Contact Service (Tests)", href: "https://github.com/Eskinder185/java-contact-service-tests" },
+  { label: "Java Contact Service (Tests)", href: "https://github.com/Eskinder185/QAContactService" },
   { label: "C++ Data Structures Portfolio", href: "https://github.com/Eskinder185/cpp-data-structures-portfolio" },
   { label: "AlignID", href: "https://github.com/Eskinder185/AlignID" },
   { label: "Hive", href: "https://github.com/Eskinder185/Hive" },
@@ -29,8 +29,7 @@ export const moreProjectPills: ProjectPill[] = [
   { label: "Draw It or Lose It (Web Design)", href: "https://github.com/Eskinder185/draw-it-or-lose-it-web-design" },
   { label: "Agile Capstone Reflections", href: "https://github.com/Eskinder185/agile-capstone-reflections" },
   { label: "Progress Tracker", href: "https://github.com/Eskinder185/ProgreesTracker" }, // (typo in repo: ProgreesTracker)
-  { label: "Intro AWS re/Start Labs", href: "https://github.com/Eskinder185/intro-aws-restart-labs" },
-  { label: "E-Portfolio (This Site)", href: "https://github.com/Eskinder185/eportfolio" },
+  { label: "E-Portfolio (This Site)", href: "https://github.com/Eskinder185/EKportfolio" },
   { label: "Professional Dev Notes", href: "https://github.com/Eskinder185/professionaldev" }
 ];
 

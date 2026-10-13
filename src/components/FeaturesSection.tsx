@@ -12,7 +12,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({ onNavigate }) => {
       icon: Briefcase,
       title: 'Experience',
       description:
-        'From Amazon operations to SNHU CS, Springboard, and AWS re/Start—hands-on with 1200+ hrs of training across AWS (EC2, VPC, Lambda, RDS), Java/Python, and DevSecOps practices.',
+        'From Amazon operations in Stone Mountain to Georgia State / SNHU CS, Springboard, AWS re/Start and AWS/YUPRO training—with training and project work across AWS (EC2, VPC, Lambda, RDS), Java/Python, and DevSecOps practices.',
       gradient: 'from-violet-500 to-purple-600',
     },
     {
@@ -20,7 +20,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({ onNavigate }) => {
       icon: Folder,
       title: 'Projects',
       description:
-        'JohnnyCloud (serverless on AWS), Secure Task Manager (RBAC + JWT), Trivia Clash (React/Node), IDS with ML, Animal Shelter Analytics (Python + Dash), and more.',
+        'JohnnyCloud (serverless on AWS), Secure Task Manager (RBAC + JWT), TewahedoDaily, ECAA, Microsoft 365 governance labs, Animal Shelter Analytics (Python + Dash), and more.',
       gradient: 'from-cyan-500 to-blue-600',
     },
     {

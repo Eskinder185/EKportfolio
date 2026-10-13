@@ -82,15 +82,15 @@ const GeneratedCover: React.FC<{
 
       <div className="text-center space-y-3 z-10 flex-1 flex flex-col justify-center">
         <div className="space-y-2">
-          <h3
-            className="font-bold leading-tight text-center"
+          <span
+            className="block font-bold leading-tight text-center"
             style={{
               fontSize: title.length > 50 ? '0.75rem' : title.length > 30 ? '0.875rem' : '1rem',
               lineHeight: '1.2'
             }}
           >
             {title}
-          </h3>
+          </span>
           <div className="flex justify-center"><div className="w-12 h-px bg-white/40" /></div>
           {author && <p className="text-xs opacity-80 leading-tight max-w-full">{author}</p>}
         </div>

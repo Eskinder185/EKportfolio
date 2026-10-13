@@ -10,7 +10,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const handleResumeClick = () => {
-    window.open('https://drive.google.com/file/d/1MsrbPdpOz_B41ajf5lxulI85BH-SvA50/view?usp=drive_link', '_blank');
+    window.location.href = 'mailto:eskinderkassahun25@gmail.com?subject=Resume%20request';
   };
 
   return (
@@ -30,7 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           className="inline-block mb-10"
         >
           <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium text-gray-400 border border-white/10 bg-white/5">
-            Cloud & Security Engineer
+            IT Infrastructure | Cloud Engineering | Cybersecurity
           </span>
         </motion.div>
 
@@ -53,7 +53,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           custom={2}
           className="text-lg sm:text-xl text-gray-400 leading-relaxed max-w-lg mx-auto mb-14"
         >
-          I build secure, scalable cloud systems and modern DevOps workflows.
+          I work across infrastructure, cloud and security through operational troubleshooting, hands-on labs and software projects.
         </motion.p>
 
         {/* 4. Two CTAs — cleaner spacing and alignment */}
@@ -77,7 +77,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             className="w-full sm:w-auto px-8 py-3 text-base font-medium rounded-full border border-white/20 text-white hover:bg-white/10 hover:border-white/30 transition-colors"
           >
             <Download className="w-4 h-4 mr-2 inline-block" />
-            View Résumé
+            Request Résumé
           </Button>
         </motion.div>
       </div>

@@ -23,8 +23,8 @@ const Footer: React.FC = () => {
               Eskinder Kassahun
             </h3>
             <p className="text-gray-400 leading-relaxed">
-              Cloud Security Engineer & Full-Stack Developer passionate about building 
-              secure, scalable, and innovative solutions.
+              IT infrastructure, cloud engineering and cybersecurity projects supported by
+              operational troubleshooting and software development.
             </p>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />

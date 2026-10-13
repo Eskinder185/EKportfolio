@@ -73,6 +73,10 @@ const AboutPage: React.FC = () => {
               <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-violet-500/20 to-cyan-500/20 border border-white/10">
                 <ImageWithFallback
                   src={photoUrl}
+                  loading="eager"
+                  decoding="async"
+                  width={1007}
+                  height={1007}
                   alt="Eskinder Kassahun"
                   className="w-full h-full object-cover"
                 />
@@ -90,13 +94,13 @@ const AboutPage: React.FC = () => {
                 <span className="gradient-text">Eskinder Kassahun</span>
               </h1>
               <h2 className="text-xl text-gray-300 mb-6">
-                Cloud Security Engineer &amp; Full-Stack Developer
+                IT Infrastructure | Cloud Engineering | Cybersecurity
               </h2>
 
               <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-6">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4" />
-                  Georgia, GA
+                  Atlanta, GA
                 </div>
                 <div className="flex items-center gap-2">
                   <Globe className="w-4 h-4" />
@@ -104,7 +108,7 @@ const AboutPage: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
-                  4+ Years Experience
+                  Hands-on projects &amp; training
                 </div>
               </div>
             </div>

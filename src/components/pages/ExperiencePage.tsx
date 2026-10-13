@@ -1,3 +1,4 @@
+import { experienceUpdates } from '../../data/portfolio-updates';
 import React, { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { MapPin, ExternalLink, ChevronRight } from 'lucide-react';
@@ -8,7 +9,7 @@ interface ExperiencePageProps {
   onNavigate: (page: string) => void;
 }
 
-type Experience = {
+export type Experience = {
   id: string;
   period: string;
   role: string;
@@ -126,84 +127,7 @@ function TimelineMilestone({
 }
 
 const ExperiencePage: React.FC<ExperiencePageProps> = ({ onNavigate }) => {
-  const experiences = [
-    {
-      id: 'aws-restart',
-      period: 'Jul 2025 – Sep 2025',
-      role: 'Cloud Engineering Trainee (AWS re/Start)',
-      company: 'Per Scholas • AWS re/Start',
-      companyUrl: 'https://perscholas.org',
-      location: 'Atlanta, GA (Remote/Hybrid)',
-      type: 'Training',
-      description:
-        'Immersive cloud engineering program focused on AWS fundamentals, security, and automation with hands-on labs and team projects.',
-      achievements: [
-        'Built secure VPCs with public/private subnets, routing, and security groups',
-        'Automated a LAMP → Amazon RDS migration with parameterized secrets and monitoring',
-        'Developed serverless workflows using S3 + Lambda + SNS with CloudWatch observability',
-        'Practiced IaC and reviews with CloudFormation/Terraform starter patterns'
-      ],
-      technologies: ['AWS', 'VPC', 'EC2', 'RDS', 'IAM', 'Lambda', 'CloudWatch', 'CloudFormation'],
-      relatedProject: 'projects'
-    },
-    {
-      id: 'springboard-fellow',
-      period: 'Jan 2025 – May 2025',
-      role: 'Software Engineering Fellow',
-      company: 'Springboard',
-      companyUrl: 'https://www.springboard.com',
-      location: 'Remote',
-      type: 'Bootcamp',
-      description:
-        'Mentor-guided bootcamp emphasizing full-stack delivery, clean architecture, and CI/CD. Built portfolio apps and received weekly code reviews.',
-      achievements: [
-        'Shipped full-stack/web projects: Neon Meme Machine, Jeopardy-style Trivia, Travel Portal',
-        'Integrated React + Node patterns and REST APIs with robust error handling',
-        'Set up GitHub Actions for lint/test workflows and repeatable deployments',
-        'Collaborated via pair programming and iterative design feedback'
-      ],
-      technologies: ['React', 'Node.js', 'TypeScript', 'JavaScript', 'MongoDB', 'GitHub Actions'],
-      relatedProject: 'projects'
-    },
-    {
-      id: 'snhu-student',
-      period: '2019 – Aug 2025',
-      role: 'B.S. in Computer Science',
-      company: 'Southern New Hampshire University',
-      companyUrl: 'https://www.snhu.edu',
-      location: 'Manchester, NH (Remote)',
-      type: 'Education',
-      description:
-        'Computer Science degree with emphasis on software development, data structures, and security. Culminated in a security-focused capstone.',
-      achievements: [
-        'Capstone: Secure Task Manager with MVC, JWT auth, and RBAC + audit logging',
-        'Built a Python ML Intrusion Detection System (Isolation Forest over netflow features)',
-        'Implemented encrypted auth flows (hashing/crypto) and practiced secure coding',
-        'Produced UML/system docs for DriverPass and other course projects'
-      ],
-      technologies: ['Java', 'Python', 'C++', 'SQL', 'Linux', 'Security', 'UML'],
-      relatedProject: 'case-studies'
-    },
-    {
-      id: 'amazon-associate',
-      period: '2021 – 2023',
-      role: 'Warehouse Associate',
-      company: 'Amazon',
-      companyUrl: 'https://www.amazon.com',
-      location: 'Atlanta, GA',
-      type: 'Operations',
-      description:
-        'High-volume operations experience while pursuing CS studies. Built discipline around process, quality, and teamwork.',
-      achievements: [
-        'Maintained high accuracy in fulfillment and inventory handling',
-        'Supported process improvements that increased throughput and reduced waste',
-        'Onboarded peers on safety and workflow best practices',
-        'Balanced long shifts with completing degree and portfolio projects'
-      ],
-      technologies: ['Process Optimization', 'Quality', 'Teamwork', 'Documentation'],
-      relatedProject: null
-    }
-  ];
+  const experiences = experienceUpdates;
 
   const handleCompanyClick = (url: string) => {
     window.open(url, '_blank');

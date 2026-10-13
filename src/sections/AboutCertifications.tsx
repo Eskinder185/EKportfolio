@@ -7,36 +7,42 @@ const certifications: CredentialCardData[] = [
     org: 'AWS',
     icon: '☁️',
     gradient: 'from-orange-500 to-amber-600',
+    verificationPending: true,
   },
   {
     title: 'AWS Certified Solutions Architect – Associate',
     org: 'AWS',
     icon: '🏗️',
     gradient: 'from-cyan-500 to-blue-600',
+    verificationPending: true,
   },
   {
     title: 'CompTIA Security+ ce Certification',
     org: 'CompTIA',
     icon: '🔐',
     gradient: 'from-indigo-500 to-sky-600',
+    verificationPending: true,
   },
   {
     title: 'ISC2 Certified in Cybersecurity (CC)',
     org: 'ISC2',
     icon: '🛡️',
     gradient: 'from-violet-500 to-purple-600',
+    verificationPending: true,
   },
   {
     title: 'Six Sigma Yellow Belt Professional',
     org: '6sigmastudy / VMEdu',
     icon: '📊',
     gradient: 'from-emerald-500 to-teal-600',
+    verificationPending: true,
   },
   {
     title: 'OSHA 10 Hour General Industry Safety and Health',
     org: 'NYC Construction Safety Training LLC',
     icon: '⚠️',
     gradient: 'from-amber-500 to-orange-600',
+    verificationPending: true,
   },
   {
     title: 'Cisco Certified Network Associate (CCNA)',
@@ -58,8 +64,8 @@ export default function AboutCertifications() {
             <span className="gradient-text">Certifications</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Industry certifications and professional credentials that strengthen my foundation
-            across cloud, cybersecurity, operations, and continuous improvement.
+            Credentials listed in the current portfolio. Public verification links have not yet been
+            added; CCNA is clearly marked as in progress.
           </p>
         </div>
 

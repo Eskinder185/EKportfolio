@@ -29,7 +29,9 @@ const CTASection: React.FC<CTASectionProps> = ({ onNavigate }) => {
     setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    const subject = encodeURIComponent(`Inquiry from ${formData.name}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nTopic: ${formData.projectType}\n\n${formData.message}`);
+    window.location.href = `mailto:eskinderkassahun25@gmail.com?subject=${subject}&body=${body}`;
 
     setIsSubmitting(false);
     setIsSubmitted(true);
@@ -60,13 +62,13 @@ const CTASection: React.FC<CTASectionProps> = ({ onNavigate }) => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Form */}
           <div className="relative p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-violet-500/30 transition-all duration-300">
-            <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
+            <h3 className="text-2xl font-bold mb-6">Create an Email Draft</h3>
 
             {isSubmitted ? (
               <div className="text-center py-8">
                 <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                <h4 className="text-xl font-semibold text-green-400 mb-2">Message Sent!</h4>
-                <p className="text-gray-300">Thanks! I’ll get back to you within 24 hours.</p>
+                <h4 className="text-xl font-semibold text-green-400 mb-2">Email Draft Opened</h4>
+                <p className="text-gray-300">Review and send the draft in your email application.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -146,12 +148,12 @@ const CTASection: React.FC<CTASectionProps> = ({ onNavigate }) => {
                   {isSubmitting ? (
                     <div className="flex items-center gap-2">
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Sending...
+                      Opening...
                     </div>
                   ) : (
                     <div className="flex items-center gap-2">
                       <Send className="w-4 h-4" />
-                      Send Message
+                      Open Email Draft
                     </div>
                   )}
                 </Button>
@@ -175,12 +177,12 @@ const CTASection: React.FC<CTASectionProps> = ({ onNavigate }) => {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                  <span className="text-gray-300">Replies within 24 hours</span>
+                  <span className="text-gray-300">Direct follow-up by email</span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-violet-400 rounded-full" />
-                  <span className="text-gray-300">Free 30-minute intro call</span>
+                  <span className="text-gray-300">Call time coordinated by email</span>
                 </div>
 
                 <div className="flex items-center gap-3">
@@ -196,7 +198,7 @@ const CTASection: React.FC<CTASectionProps> = ({ onNavigate }) => {
                   className="w-full border-2 border-white/20 bg-transparent hover:bg-white/5 text-white font-semibold py-3 rounded-full transition-all duration-200 hover:scale-105 hover:border-cyan-500/50 group"
                 >
                   <div className="flex items-center gap-2">
-                    Schedule a Call
+                    Request a Call
                     <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </div>
                 </Button>
