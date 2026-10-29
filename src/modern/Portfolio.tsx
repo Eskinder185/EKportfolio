@@ -104,13 +104,9 @@ function ProjectVisual({ project }: { project: Project }) {
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <article className="work-card reveal">
-      <a
-        href={`#project/${project.id}`}
-        className="visual-link"
-        aria-label={`Explore ${project.name}`}
-      >
+      <div className="visual-link">
         <ProjectVisual project={project} />
-      </a>
+      </div>
       <div className="card-heading">
         <span className="mono">
           {String(index + 1).padStart(2, "0")} / {project.category}
@@ -622,11 +618,7 @@ export default function Portfolio() {
         Skip to content
       </a>
       <header className="site-header">
-        <a
-          className="wordmark"
-          href="#home"
-          aria-label="Eskinder Kassahun home"
-        >
+        <a className="wordmark" href="#home">
           ek<span>.</span>
           <small>ESKINDER KASSAHUN</small>
         </a>

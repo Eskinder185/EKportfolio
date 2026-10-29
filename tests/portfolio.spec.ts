@@ -144,7 +144,7 @@ for (const theme of ["dark", "light"]) {
       await page.goto("/#" + route);
       await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
       const result = await new AxeBuilder({ page })
-        .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+        .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
         .analyze();
       expect(
         result.violations,

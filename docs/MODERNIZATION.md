@@ -17,6 +17,9 @@ data remain in source; the public project gallery uses the reviewed catalog in
   full opacity throughout animation.
 - Original interface illustrations made in CSS; these are labeled as
   illustrations on detail pages and do not represent captured product screens.
+- Decorative project art avoids duplicate link targets; visible titles and
+  explicit actions carry navigation. Local favicon and crawler rules prevent
+  missing-resource errors and invalid robots responses.
 
 The primary email, LinkedIn address, portrait and biography come from existing
 portfolio data. There is no unverified downloadable résumé or simulated contact
