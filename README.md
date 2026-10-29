@@ -6,8 +6,16 @@ automation, and supporting software-engineering work.
 
 ## Running the code
 
-Run `npm i` to install dependencies, then `npm run dev` to start the local site.
-Use `npm run build` for the production build.
+Run `npm ci --include=optional` to install the locked dependencies, then
+`npm run dev` to start the local site. Use `npm run typecheck`, `npm run build`
+and `npm test` to validate it. Local Windows tests use Microsoft Edge; CI installs
+Playwright Chromium.
+
+The updated portfolio includes theme switching, a searchable project gallery,
+shareable project details, an interactive toolkit and a learning timeline.
+Existing About, Experience, Case Studies and Reading pages remain available.
+See [modernization notes](docs/MODERNIZATION.md) for evidence, delivery controls
+and verification limits.
 
 ## Evidence images
 
