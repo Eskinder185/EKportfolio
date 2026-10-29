@@ -1,47 +1,69 @@
-# Build and deploy EKportfolio to GitHub Pages (gh-pages branch)
-# Site: https://eskinder185.github.io/EKportfolio/
-# After first run: repo Settings → Pages → Source: Deploy from a branch → Branch: gh-pages
-
-name: Deploy to GitHub Pages
+name: Validate and deploy portfolio
 
 on:
+  pull_request:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      deploy:
+        description: Deploy the checked build from main
+        type: boolean
+        default: false
 
 permissions:
-  contents: write   # needed to push gh-pages branch
-  pages: write
-  id-token: write
+  contents: read
+
+concurrency:
+  group: portfolio-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Ensure Rollup Linux binary (npm optional deps bug)
-        run: npm install @rollup/rollup-linux-x64-gnu --no-save
-
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --include=optional
+      - name: Type check application
+        run: npm run typecheck
       - name: Build
         run: npm run build
-
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Install test browser
+        run: npx playwright install --with-deps chromium
+      - name: Test responsive interactions and accessibility
+        run: npm test
+      - name: Retain checked build
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          name: portfolio-build
+          path: build/
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.deploy)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: portfolio-build
+          path: build
+      - uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
+        with:
+          github_token: ${{ github.token }}
+          publish_dir: build
           publish_branch: gh-pages
-          force_orphan: true
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
+          keep_files: false
+          cname: eskinder.dev
